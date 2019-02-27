@@ -33,7 +33,7 @@ angular.module('kityminderEditor')
                             return;
                         }
                         
-                        let fr = new FileReader();
+                        var fr = new FileReader();
                         fr.onload = function (e) {
                             $scope.data.url = e.target.result ; 
                             $scope.$apply();

@@ -2253,6 +2253,7 @@ _p[25] = {
                         selectfile: "Select file...",
                         ok: "OK",
                         cancel: "Cancel",
+                        pasteimage: "Paste here and use the picture of the clipboard.",
                         formatinfo: "file ext must be jpg、gif or png"
                     },
                     hyperlink: {
@@ -2476,6 +2477,7 @@ _p[26] = {
                         selectfile: "Select file...",
                         ok: "OK",
                         cancel: "Cancel",
+                        pasteimage: "Paste here and use the picture of the clipboard.",
                         formatinfo: "file ext must be jpg、gif or png"
                     },
                     hyperlink: {
@@ -2699,6 +2701,7 @@ _p[27] = {
                         selectfile: "选择文件...",
                         ok: "确定",
                         cancel: "取消",
+                        pasteimage: "在这里粘贴，可使用剪切板的图片。",
                         formatinfo: "后缀只能是 jpg、gif 及 png"
                     },
                     hyperlink: {
@@ -2943,7 +2946,7 @@ angular.module('kityminderEditor').run(['$templateCache', function($templateCach
 
 
   $templateCache.put('ui/dialog/image/image.tpl.html',
-    "<div class=\"modal-header\"><h3 class=\"modal-title\">{{ 'title' | lang: 'ui/dialog/image'}}</h3></div><div class=\"modal-body\"><tabset><tab heading=\"{{ 'imagesearch' | lang: 'ui/dialog/image'}}\"><form class=\"form-inline\"><div class=\"form-group\"><label for=\"search-keyword\">{{ 'keyword' | lang: 'ui/dialog/image'}}</label><input type=\"text\" class=\"form-control\" ng-model=\"data.searchKeyword2\" id=\"search-keyword\" placeholder=\"{{ 'placeholder' | lang: 'ui/dialog/image'}}\"></div><button class=\"btn btn-primary\" ng-click=\"searchImage()\">{{ 'baidu' | lang: 'ui/dialog/image'}}</button></form><div class=\"search-result\" id=\"search-result\"><ul><li ng-repeat=\"image in list\" id=\"{{ 'img-item' + $index }}\" ng-class=\"{'selected' : isSelected}\" ng-click=\"selectImage($event)\"><img id=\"{{ 'img-' + $index }}\" ng-src=\"{{ image.src || '' }}\" alt=\"{{ image.title }}\" onerror=\"this.parentNode.removeChild(this)\"> <span>{{ image.title }}</span></li></ul></div></tab><tab heading=\"{{ 'linkimage' | lang: 'ui/dialog/image'}}\"><form><div class=\"form-group\" ng-class=\"{true: 'has-success', false: 'has-error'}[urlPassed]\"><label for=\"image-url\">{{ 'linkurl' | lang: 'ui/dialog/image'}}</label><input type=\"text\" class=\"form-control\" ng-model=\"data.url\" ng-blur=\"urlPassed = data.R_URL.test(data.url)\" ng-focus=\"this.value = data.url\" ng-keydown=\"shortCut($event)\" id=\"image-url\" placeholder=\"{{ 'placeholder2' | lang: 'ui/dialog/image'}}\"></div><div class=\"form-group\" ng-class=\"{'has-success' : titlePassed}\"><label for=\"image-title\">{{ 'imagehint' | lang: 'ui/dialog/image'}}</label><input type=\"text\" class=\"form-control\" ng-model=\"data.title\" ng-blur=\"titlePassed = true\" placeholder=\"{{ 'placeholder3' | lang: 'ui/dialog/image'}}\"></div><div class=\"form-group\"><label for=\"image-preview\">{{ 'preview' | lang: 'ui/dialog/image'}}</label><img class=\"image-preview\" ng-src=\"{{ data.url }}\" alt=\"{{ data.title }}\"></div></form></tab><tab heading=\"{{ 'uploadimage' | lang: 'ui/dialog/image'}}\" active=\"true\"><form><div class=\"form-group\"><input type=\"file\" name=\"upload-image\" id=\"upload-image\" class=\"upload-image\" accept=\".jpg,.JPG,jpeg,JPEG,.png,.PNG,.gif,.GIF\"><label for=\"upload-image\" class=\"btn btn-primary\"><span>{{ 'selectfile' | lang: 'ui/dialog/image'}}</span></label></div><div class=\"form-group\" ng-class=\"{'has-success' : titlePassed}\"><label for=\"image-title\">{{ 'imagehint' | lang: 'ui/dialog/image'}}</label><input type=\"text\" class=\"form-control\" ng-model=\"data.title\" ng-blur=\"titlePassed = true\" placeholder=\"{{ 'placeholder3' | lang: 'ui/dialog/image'}}\"></div><div class=\"form-group\"><label for=\"image-preview\">{{ 'preview' | lang: 'ui/dialog/image'}}</label><img class=\"image-preview\" ng-src=\"{{ data.url }}\" title=\"{{ data.title }}\" alt=\"{{ data.title }}\"></div></form></tab></tabset></div><div class=\"modal-footer\"><button class=\"btn btn-primary\" ng-click=\"ok()\">{{ 'ok' | lang: 'ui/dialog/image'}}</button> <button class=\"btn btn-warning\" ng-click=\"cancel()\">{{ 'cancel' | lang: 'ui/dialog/image'}}</button></div>"
+    "<div class=\"modal-header\"><h3 class=\"modal-title\">{{ 'title' | lang: 'ui/dialog/image'}}</h3></div><div class=\"modal-body\"><tabset><tab heading=\"{{ 'imagesearch' | lang: 'ui/dialog/image'}}\"><form class=\"form-inline\"><div class=\"form-group\"><label for=\"search-keyword\">{{ 'keyword' | lang: 'ui/dialog/image'}}</label><input type=\"text\" class=\"form-control\" ng-model=\"data.searchKeyword2\" id=\"search-keyword\" placeholder=\"{{ 'placeholder' | lang: 'ui/dialog/image'}}\"></div><button class=\"btn btn-primary\" ng-click=\"searchImage()\">{{ 'baidu' | lang: 'ui/dialog/image'}}</button></form><div class=\"search-result\" id=\"search-result\"><ul><li ng-repeat=\"image in list\" id=\"{{ 'img-item' + $index }}\" ng-class=\"{'selected' : isSelected}\" ng-click=\"selectImage($event)\"><img id=\"{{ 'img-' + $index }}\" ng-src=\"{{ image.src || '' }}\" alt=\"{{ image.title }}\" onerror=\"this.parentNode.removeChild(this)\"> <span>{{ image.title }}</span></li></ul></div></tab><tab heading=\"{{ 'linkimage' | lang: 'ui/dialog/image'}}\"><form><div class=\"form-group\" ng-class=\"{true: 'has-success', false: 'has-error'}[urlPassed]\"><label for=\"image-url\">{{ 'linkurl' | lang: 'ui/dialog/image'}}</label><input type=\"text\" class=\"form-control\" ng-model=\"data.url\" ng-blur=\"urlPassed = data.R_URL.test(data.url)\" ng-focus=\"this.value = data.url\" ng-keydown=\"shortCut($event)\" id=\"image-url\" placeholder=\"{{ 'placeholder2' | lang: 'ui/dialog/image'}}\"></div><div class=\"form-group\" ng-class=\"{'has-success' : titlePassed}\"><label for=\"image-title\">{{ 'imagehint' | lang: 'ui/dialog/image'}}</label><input type=\"text\" class=\"form-control\" ng-model=\"data.title\" ng-blur=\"titlePassed = true\" placeholder=\"{{ 'placeholder3' | lang: 'ui/dialog/image'}}\"></div><div class=\"form-group\"><label for=\"image-preview\">{{ 'preview' | lang: 'ui/dialog/image'}}</label><img class=\"image-preview\" ng-src=\"{{ data.url }}\" alt=\"{{ data.title }}\"></div></form></tab><tab heading=\"{{ 'uploadimage' | lang: 'ui/dialog/image'}}\" active=\"true\"><form><div class=\"form-group\"><input type=\"file\" name=\"upload-image\" id=\"upload-image\" class=\"upload-image\" accept=\".jpg,.JPG,jpeg,JPEG,.png,.PNG,.gif,.GIF\"><label for=\"upload-image\" class=\"btn btn-primary\"><span>{{ 'selectfile' | lang: 'ui/dialog/image'}}</span></label><input id=\"paste-image\" type=\"text\" placeholder=\"{{ 'pasteimage' | lang: 'ui/dialog/image'}}\" style=\"width: 300px\" maxlength=\"0\"></div><div class=\"form-group\" ng-class=\"{'has-success' : titlePassed}\"><label for=\"image-title\">{{ 'imagehint' | lang: 'ui/dialog/image'}}</label><input type=\"text\" class=\"form-control\" ng-model=\"data.title\" ng-blur=\"titlePassed = true\" placeholder=\"{{ 'placeholder3' | lang: 'ui/dialog/image'}}\"></div><div class=\"form-group\"><label for=\"image-preview\">{{ 'preview' | lang: 'ui/dialog/image'}}</label><img class=\"image-preview\" ng-src=\"{{ data.url }}\" title=\"{{ data.title }}\" alt=\"{{ data.title }}\"></div></form></tab></tabset></div><div class=\"modal-footer\"><button class=\"btn btn-primary\" ng-click=\"ok()\">{{ 'ok' | lang: 'ui/dialog/image'}}</button> <button class=\"btn btn-warning\" ng-click=\"cancel()\">{{ 'cancel' | lang: 'ui/dialog/image'}}</button></div>"
   );
 
 }]);
@@ -3419,6 +3422,36 @@ angular.module('kityminderEditor')
             var $imageUrl = $('#image-url');
             $imageUrl.focus();
             $imageUrl[0].setSelectionRange(0, $scope.data.url.length);
+
+            // add event listener
+            document.getElementById('paste-image').addEventListener('paste', function(e) {
+
+                var cbd = e.clipboardData;
+                var ua = window.navigator.userAgent;
+
+                if ( !(e.clipboardData && e.clipboardData.items) ) return;
+                if(cbd.items && cbd.items.length === 2 && cbd.items[0].kind === "string" && cbd.items[1].kind === "file" &&
+                    cbd.types && cbd.types.length === 2 && cbd.types[0] === "text/plain" && cbd.types[1] === "Files" &&
+                    ua.match(/Macintosh/i) && Number(ua.match(/Chrome\/(\d{2})/i)[1]) < 49) return;
+
+                for(var i = 0; i < cbd.items.length; i++) {
+                    var item = cbd.items[i];
+                    if(item.kind == "file"){
+                        var blob = item.getAsFile();
+                        if (blob.size === 0) {
+                            return;
+                        }
+                        
+                        var fr = new FileReader();
+                        fr.onload = function (e) {
+                            $scope.data.url = e.target.result ; 
+                            $scope.$apply();
+                        }
+                        fr.readAsDataURL(blob);                          
+                    }
+                }
+            });
+
         }, 300);
 
         $modalInstance.rendered.then(function () {
