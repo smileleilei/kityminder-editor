@@ -49,6 +49,7 @@
                     <!-- 这里不能用 ng-change -->
                     <input type="file" name="upload-image" id="upload-image" class="upload-image" accept=".jpg,.JPG,jpeg,JPEG,.png,.PNG,.gif,.GIF" />
                     <label for="upload-image" class="btn btn-primary"><span>{{ 'selectfile' | lang: 'ui/dialog/image'}}</span></label>
+                    <input id="paste-image" type="text" placeholder="{{ 'pasteimage' | lang: 'ui/dialog/image'}}"  style="width: 300px;" maxlength="0" />
                 </div>
                 <div class="form-group" ng-class="{'has-success' : titlePassed}">
                     <label for="image-title">{{ 'imagehint' | lang: 'ui/dialog/image'}}</label>

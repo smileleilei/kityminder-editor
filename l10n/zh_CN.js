@@ -163,6 +163,7 @@ define(function(require, exports, module) {
                     'selectfile': '选择文件...',
                     'ok': '确定',
                     'cancel': '取消',
+                    'pasteimage': '在这里粘贴，可使用剪切板的图片。',
                     'formatinfo': '后缀只能是 jpg、gif 及 png'
                 },
                 'hyperlink': {

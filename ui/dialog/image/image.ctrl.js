@@ -13,6 +13,36 @@ angular.module('kityminderEditor')
             var $imageUrl = $('#image-url');
             $imageUrl.focus();
             $imageUrl[0].setSelectionRange(0, $scope.data.url.length);
+
+            // add event listener
+            document.getElementById('paste-image').addEventListener('paste', function(e) {
+
+                var cbd = e.clipboardData;
+                var ua = window.navigator.userAgent;
+
+                if ( !(e.clipboardData && e.clipboardData.items) ) return;
+                if(cbd.items && cbd.items.length === 2 && cbd.items[0].kind === "string" && cbd.items[1].kind === "file" &&
+                    cbd.types && cbd.types.length === 2 && cbd.types[0] === "text/plain" && cbd.types[1] === "Files" &&
+                    ua.match(/Macintosh/i) && Number(ua.match(/Chrome\/(\d{2})/i)[1]) < 49) return;
+
+                for(var i = 0; i < cbd.items.length; i++) {
+                    var item = cbd.items[i];
+                    if(item.kind == "file"){
+                        var blob = item.getAsFile();
+                        if (blob.size === 0) {
+                            return;
+                        }
+                        
+                        let fr = new FileReader();
+                        fr.onload = function (e) {
+                            $scope.data.url = e.target.result ; 
+                            $scope.$apply();
+                        }
+                        fr.readAsDataURL(blob);                          
+                    }
+                }
+            });
+
         }, 300);
 
         $modalInstance.rendered.then(function () {

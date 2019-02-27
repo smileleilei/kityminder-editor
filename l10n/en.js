@@ -163,6 +163,7 @@ define(function(require, exports, module) {
                     'selectfile': 'Select file...',
                     'ok': 'OK',
                     'cancel': 'Cancel',
+                    'pasteimage': 'Paste here and use the picture of the clipboard.',
                     'formatinfo': 'file ext must be jpg、gif or png'
                 },
                 'hyperlink': {
